@@ -1,4 +1,5 @@
 name: Pipeline
+# Modificación
 
 on:
   push:
@@ -66,7 +67,7 @@ jobs:
         run: |
           sam package \
             --region ${TESTING_REGION} \
-            --output-template-file packaged-testing.yaml
+            --output-template-file packaged-testing.yaml \
             --resolve-s3
 
       - name: Almacenar plantilla de testeo compilada para el siguiente paso
@@ -79,7 +80,7 @@ jobs:
         run: |
           sam package \
             --region ${PROD_REGION} \
-            --output-template-file packaged-prod.yaml
+            --output-template-file packaged-prod.yaml \
             --resolve-s3
 
       - name: Almacenar plantilla de producción compilada para el siguiente paso
